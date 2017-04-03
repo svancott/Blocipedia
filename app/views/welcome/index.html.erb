@@ -5,6 +5,7 @@
   <p>
     <%= link_to "Sign In", new_user_session_path %> or
     <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-primary' %> today!
+    <%= link_to "Sign out", destroy_user_session_path, class: 'btn btn-danger' %>
   </p>
 </div>
 
