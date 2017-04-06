@@ -19,4 +19,12 @@ class ApplicationController < ActionController::Base
       redirect_to new_user_session_path
     end
   end
+
+  # def upgrade_to_premium
+  #   current_user.update_attributes!(role: 'premium')
+  # end
+
+  # def downgrade_to_standard
+  #   current_user.update_attributes!(role: 'standard')
+  # end
 end
