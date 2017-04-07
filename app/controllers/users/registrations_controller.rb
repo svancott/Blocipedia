@@ -36,6 +36,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def upgrade
+    current_user.update_attributes!(role: 'premium')
+  end
+
+  def downgrade
+    current_user.update_attributes!(role: 'standard')
+  end
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.

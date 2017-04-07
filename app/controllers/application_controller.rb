@@ -20,6 +20,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def upgrade(user)
+    user.update_attributes!(role: 'premium')
+  end
   # def upgrade_to_premium
   #   current_user.update_attributes!(role: 'premium')
   # end
