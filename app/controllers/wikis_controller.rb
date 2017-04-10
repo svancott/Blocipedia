@@ -59,6 +59,11 @@ class WikisController < ApplicationController
     end
   end
 
+  def make_private
+    @wiki = Wiki.find(params[:id])
+    @wiki.update_attributes!(private: true)
+  end
+
   private
 
   def authorize_user

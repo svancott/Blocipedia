@@ -23,11 +23,20 @@ end
   )
 end
 
-10.times do
+5.times do
   Wiki.create!(
     title: Faker::HarryPotter.unique.character,
     body: Faker::HarryPotter.unique.quote,
     user: User.all.sample
+  )
+end
+
+5.times do
+  Wiki.create!(
+    title: Faker::HarryPotter.unique.character,
+    body: Faker::HarryPotter.unique.quote,
+    user: User.all.sample,
+    private: true
   )
 end
 
