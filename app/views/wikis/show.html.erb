@@ -16,3 +16,16 @@
     <%= render partial: 'form' %>
   </div>
 </div>
+
+<div class="container">
+  Collaborators:
+  <ul>
+    <li><%= @wiki.collaborators.first.email %></li>
+    <!-- <% @wiki.collaborators.each do |collaborator| %>
+      <li> <%= collaborator.email %> </li>
+    <% end %> -->
+  </ul>
+    <% if current_user && current_user.admin? || current_user && current_user == @wiki.user %>
+    Add Collaborator:
+    <% end %>
+</div>
