@@ -19,19 +19,18 @@
 
 
   <h2>Private Wikis:</h2>
-  <% if current_user.standard? %>
-    <h5>Upgrade to premium to see private Wikis <%= link_to "Upgrade", new_charge_path, class: 'btn btn-success' %> </h5>
-  <% else %>
-    <% @wikis.each do |wiki| %>
-      <% if wiki.private == true %>
-        <div class="media">
-          <div class="media-body">
-            <h4 class="media-heading">
-              <%= link_to wiki.title, wiki_path(wiki.id) %>
-            </h4>
-          </div>
+  <% if (current_user && current_user.premium?) || (current_user && current_user.admin?) %>
+  <% @wikis.each do |wiki| %>
+    <% if wiki.private == true %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= link_to wiki.title, wiki_path(wiki.id) %>
+          </h4>
         </div>
-        <% end %>
+      </div>
       <% end %>
-
+    <% end %>
+  <% else %>
+      <h5>Upgrade to premium to see private Wikis <%= link_to "Upgrade", new_charge_path, class: 'btn btn-success' %> </h5>
   <% end %>

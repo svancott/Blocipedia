@@ -12,6 +12,7 @@ class WikisController < ApplicationController
 
   def new
     @wiki = Wiki.new
+    @all_users = User.all
   end
 
   def create
@@ -20,6 +21,7 @@ class WikisController < ApplicationController
     @wiki.body = params[:wiki][:body]
     @wiki.user= current_user
     @wiki.private = params[:wiki][:private]
+    # @wiki.collaborator = Collaborator.new(wiki_id: @wiki, user_id: User.where(email: params[:new_collaborator]))
 
     if @wiki.save
       flash[:notice] = "Wiki was saved."
@@ -43,6 +45,7 @@ class WikisController < ApplicationController
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
     @wiki.private = params[:wiki][:private]
+    # @wiki.collaborator = Collaborator.new(wiki_id: @wiki, user_id: User.where(email: params[:new_collaborator]))
     authorize @wiki
 
     if @wiki.save
@@ -66,11 +69,6 @@ class WikisController < ApplicationController
     end
   end
 
-  # def private
-  #   @wiki = Wiki.find(params[:id])
-  #   @wiki.update_attributes!(private: true)
-  # end
-
   private
 
   def authorize_user
@@ -78,5 +76,11 @@ class WikisController < ApplicationController
        flash[:alert] = "You must be an admin to do that."
        redirect_to wikis_path
      end
+   end
+
+   def collaborator
+     @wiki = Wiki.find(params[:id])
+     @collaborator = Collaborator.new(wiki_id: @wiki, user_id: User.where(email: params[:new_collaborator]))
+     @collaborator.save
    end
 end

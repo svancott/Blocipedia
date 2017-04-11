@@ -1,5 +1,9 @@
 class Wiki < ApplicationRecord
   belongs_to :user
-  has_many :wikis_collaborators
-  has_many :collaborators, through: :wikis_collaborators
+  has_many :collaborators
+  has_many :users, through: :collaborators
+
+  def owner
+    user
+  end
 end
