@@ -1,8 +1,13 @@
 class WikisController < ApplicationController
+
   before_action :require_sign_in, except: [:index, :show]
   before_action :authorize_user, except: [:index, :show, :new, :edit, :create, :update]
   def index
     @wikis = Wiki.all
+  end
+
+  def scoped_index
+    @wikis = policy_scope(Wiki)
   end
 
   def new
