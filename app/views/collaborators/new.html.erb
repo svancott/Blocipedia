@@ -3,15 +3,17 @@
     <p>Please enter the collaborator:</p>
   </div>
   <div class="col-md-8">
-    <%= form_for @collaborator do |f| %>
-      <div class="form-group">
+    <!-- form_for new_wiki_collaborator_path(@wiki) -->
+    <%= form_for [@wiki, @collaborator] do |f| %>
+      <!-- <div class="form-group">
         <%= f.label :wiki_id %>
         <%= f.text_field :wiki_id, class: 'form-control' %>
       </div>
       <div class="form-group">
         <%= f.label :user_id %>
         <%= f.text_field :user_id, class: 'form-control' %>
-      </div>
+      </div> -->
+      <%= f.collection_select :user_id, @wiki.possible_collaborators, :id, :email %>
       <div class="form-group">
         <%= f.submit "Save", class: 'btn btn-success' %>
       </div>

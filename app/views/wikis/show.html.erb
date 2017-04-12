@@ -17,9 +17,9 @@
 <div class="rows">
   <div class="col-md-8">
     Collaborators:
-    <% @wiki.users.each do |user| %>
-      <li> <%= user.email %> </li>
+    <% @wiki.collaborators.each do |collaborator| %>
+      <li> <%= collaborator.user.email %> <%= link_to 'X', wiki_collaborator_path(@wiki.id, collaborator.id), data: {confirm: 'Are you sure?'}, method: :delete %> </li>
     <% end %>
   </div>
 </div>
-<%= link_to "Add Collaborators", new_collaborator_path, class: 'btn btn-success' %>
+<%= link_to "Add Collaborators", new_wiki_collaborator_path(@wiki), class: 'btn btn-success' %>

@@ -6,4 +6,8 @@ class Wiki < ApplicationRecord
   def owner
     user
   end
+
+  def possible_collaborators
+    User.all.reject{ |u| u.id == user.id || users.include?(u) }
+  end
 end
