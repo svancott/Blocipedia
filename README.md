@@ -20,22 +20,25 @@ I created the ability to add collaborators by creating a model and using a HMT (
 
 Here's how the Has Many Through relationship is coded:
 
-|class Wiki|
-| ---------------------------------------------------------------- |
-| belongs_to :user |
-| has_many :collaborators |
-| has_many :users, through: :collaborators |
+{% highlight ruby %}
+class Wiki < ApplicationRecord
+  belongs_to :user
+  has_many :collaborators
+  has_many :users, through: :collaborators
+{% endhighlight %}
 
-| class User |
-| --- |
-| has_many :wikis |
-| has_many :collaborators |
-| has_many :shared_wikis, through: :collaborators, source: :wiki |
+{% highlight ruby %}
+class User < ApplicationRecord
+  has_many :wikis
+  has_many :collaborators
+  has_many :shared_wikis, through: :collaborators, source: :wiki
+{% endhighlight %}
 
-|class Collaborator|
-| ---------------------------------------------------------------- |
-| belongs_to :user |
-| belongs_to :wiki |
+{% highlight ruby %}
+class Collaborator < ApplicationRecord
+  belongs_to :user
+  belongs_to :wiki
+{% endhighlight %}
 
 In my example, the Collaborator model (which can also be considered a '*join table*', since it *joins* the User and Wiki tables) gives me the ability to call Wiki.users to see that wiki's collaborators, and User.shared_wikis to see all the wikis that that user collaborates on (I used source: :wiki to be able to change the name to :shared_wikis to prevent confusion, since User.wikis would return the wikis where that user is the author). The Has Many Through relationship is a great tool to have in your belt.
 
