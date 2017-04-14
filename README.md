@@ -1,28 +1,39 @@
-# README
+## Blocipedia
 
-## Blocipedia: a Wikipedia replica to teach the fundamentals of web development and Rails.
+# A Wikipedia replica built with Ruby on Rails
 
- Check out more at my [site](stevevancott.com).
+Welcome to Blocipedia! Here you'll find the content from the app.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Check out the app!](https://mysterious-retreat-59118.herokuapp.com/)
 
-Things you may want to cover:
+![Wikipedia-logo](https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/500px-Wikipedia-logo-v2.svg.png)
 
-* Ruby version
+I built Blocipedia using Devise for my user model, so it has plenty of user freedom including signup/signin, email confirmation, 'forgot password' assistance, and a 'timeoutable' sign-out for inactive sessions.
 
-* System dependencies
+You can also update your profile at any time, including the ability to upgrade your account to premium (and downgrade :( too). I use Stripe for the upgrade fee, so payments are smooth and easy for the user.
 
-* Configuration
+The main function of the app is the ability to add and edit wikis. Any user can create public wikis, but only 'premium' users can make private wikis. If a user decides to downgrade to a 'standard' membership, their private wikis become public.
 
-* Database creation
+If a wiki is 'public', than any user can edit, while a 'private' wiki can only be edited by its collaborators (or admins), which the author of the wiki chooses.
 
-* Database initialization
+I created the ability to add collaborators by creating a model and using a HMT (Has Many Through) relationship between wiki and user models. When choosing collaborators, the author can select the users from a dropdown menu, and also remove them at any time.
 
-* How to run the test suite
+| class User |
+| --- |
+| has_many :wikis |
+| has_many :collaborators |
+| has_many :shared_wikis, through: :collaborators, source: :wiki |
 
-* Services (job queues, cache servers, search engines, etc.)
+|class Wiki|
+| ---------------------------------------------------------------- |
+| belongs_to :user |
+| has_many :collaborators |
+| has_many :users, through: :collaborators |
 
-* Deployment instructions
+|class Collaborator|
+| ---------------------------------------------------------------- |
+| belongs_to :user |
+| belongs_to :wiki |
 
-* ...
+
+ [Check out more at my site!](stevevancott.com).
