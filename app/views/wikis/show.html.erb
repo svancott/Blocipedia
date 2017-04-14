@@ -18,7 +18,7 @@
   <div class="col-md-8">
     Collaborators:
     <% @wiki.collaborators.each do |collaborator| %>
-      <li> <%= collaborator.user.email %> <%= link_to 'X', wiki_collaborator_path(@wiki.id, collaborator.id), data: {confirm: 'Are you sure?'}, method: :delete %> </li>
+      <li> <%= collaborator.user.email %> <%= link_to 'X', wiki_collaborator_path(@wiki.id, collaborator.id), data: {confirm: 'Are you sure you want to remove this collaborator?'}, method: :delete %> </li>
     <% end %>
   </div>
 </div>
