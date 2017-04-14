@@ -2,11 +2,11 @@
 
 # A Wikipedia replica built with Ruby on Rails
 
-Welcome to Blocipedia! Here you'll find the content from the app.
-
-[Check out the app!](https://mysterious-retreat-59118.herokuapp.com/)
+Welcome to Blocipedia!
 
 ![Wikipedia-logo](https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/500px-Wikipedia-logo-v2.svg.png)
+
+[Check out the app!](https://mysterious-retreat-59118.herokuapp.com/)
 
 I built Blocipedia using Devise for my user model, so it has plenty of user freedom including signup/signin, email confirmation, 'forgot password' assistance, and a 'timeoutable' sign-out for inactive sessions.
 
@@ -18,11 +18,7 @@ If a wiki is 'public', than any user can edit, while a 'private' wiki can only b
 
 I created the ability to add collaborators by creating a model and using a HMT (Has Many Through) relationship between wiki and user models. When choosing collaborators, the author can select the users from a dropdown menu, and also remove them at any time.
 
-| class User |
-| --- |
-| has_many :wikis |
-| has_many :collaborators |
-| has_many :shared_wikis, through: :collaborators, source: :wiki |
+Here's how the Has Many Through relationship is coded:
 
 |class Wiki|
 | ---------------------------------------------------------------- |
@@ -30,10 +26,27 @@ I created the ability to add collaborators by creating a model and using a HMT (
 | has_many :collaborators |
 | has_many :users, through: :collaborators |
 
+| class User |
+| --- |
+| has_many :wikis |
+| has_many :collaborators |
+| has_many :shared_wikis, through: :collaborators, source: :wiki |
+
 |class Collaborator|
 | ---------------------------------------------------------------- |
 | belongs_to :user |
 | belongs_to :wiki |
 
+# About me
 
- [Check out more at my site!](stevevancott.com).
+I'm a developer who's passionate about writing good code and loves the satisfaction of solving problems.
+
+I've developed several apps using JavaScript, AngularJS, jQuery, and Ruby on Rails, using Git/Github as well as Heroku.
+
+I'm also experienced HTML5 and CSS, and have worked with SQL and Firebase.
+
+Currently, I'm looking for a developer role at a company that's as passionate as I am about doing good work.
+
+[Check out more at my site!](stevevancott.com).
+
+Feel free to email me at thevanicotti@gmail.com
