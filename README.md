@@ -1,14 +1,16 @@
-## Blocipedia
+## Vanipedia
 
 # A Wikipedia replica built with Ruby on Rails
 
-Welcome to Blocipedia!
+Welcome to Vanipedia!
+
+A site where you can author, edit, and collaborate on articles and share your knowledge.
 
 ![Wikipedia-logo](https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/500px-Wikipedia-logo-v2.svg.png)
 
 [Check out the app!](https://mysterious-retreat-59118.herokuapp.com/)
 
-I built Blocipedia using Devise for my user model, so it has plenty of user freedom including signup/signin, email confirmation, 'forgot password' assistance, and a 'timeoutable' sign-out for inactive sessions.
+I built Vanipedia using Devise for my user model, so it has plenty of user freedom including signup/signin, email confirmation, 'forgot password' assistance, and a 'timeoutable' sign-out for inactive sessions.
 
 You can also update your profile at any time, including the ability to upgrade your account to premium (and downgrade :( too). I use Stripe for the upgrade fee, so payments are smooth and easy for the user.
 
