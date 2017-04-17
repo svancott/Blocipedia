@@ -1,6 +1,6 @@
-## Vanipedia
+# Vanipedia
 
-# A Wikipedia replica built with Ruby on Rails
+## A Wikipedia replica built with Ruby on Rails
 
 Welcome to Vanipedia!
 
