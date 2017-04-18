@@ -79,7 +79,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address => "127.0.0.1",
     :port    => 25,
-    :domain  => 'mysterious-retreat-59118.herokuapp.com'
+    :domain  => 'vanipedia.herokuapp.com'
   }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
