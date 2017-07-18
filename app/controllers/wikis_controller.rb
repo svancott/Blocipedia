@@ -6,10 +6,6 @@ class WikisController < ApplicationController
     @wikis = policy_scope(Wiki)
   end
 
-  # def scoped_index
-  #   @wikis = policy_scope(Wiki)
-  # end
-
   def new
     @wiki = Wiki.new
     @all_users = User.all
